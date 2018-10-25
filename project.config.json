@@ -1,0 +1,42 @@
+{
+	"miniprogramRoot": "dist/",
+	"projectname": "recruit_weapp",
+	"description": "",
+	"appid": "wx6b5798538bed4ca0",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "id",
+					"pathName": "pages/index/index",
+					"query": "scene=1669edf745c99d2fc4ea25d4a448be75"
+				}
+			]
+		}
+	}
+}
