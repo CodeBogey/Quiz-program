@@ -52,7 +52,6 @@ export default class Index extends Component {
       fdMobile: this.state.phone,
       fdResourceId: '1669edf745c99d2fc4ea25d4a448be75'
     }
-    console.log('params', params)
     Taro.showLoading({
       title: '加载中',
     })
@@ -61,7 +60,6 @@ export default class Index extends Component {
       url: '/admin2/questionAccount',
       data: params
     }).then(resp => {
-      console.log('resp', resp.data)
       let id = resp.data.id
       Taro.reLaunch({
         url: `/pages/test/index?id=${id}`
@@ -70,7 +68,6 @@ export default class Index extends Component {
   }
   
   componentDidMount () {
-    console.log('this.$router.params', this.$router.params)
     if (this.$router.params && this.$router.params.scene) {
       let params = this.$router.params
       this.setState ({
@@ -84,7 +81,6 @@ export default class Index extends Component {
       method: 'POST',
       url: `/admin2/recruitJob/campusRecruitment/isStart/${id}`
     }).then(resp => {
-      console.log('resp', resp.data)
       this.setState({
         fdIsUsing: resp.data.fdIsUsing
       })
@@ -115,7 +111,6 @@ export default class Index extends Component {
         activeFlag: false
       })
     }
-    console.log('active', this.state.activeFlag)
   }
   render () {
     return (

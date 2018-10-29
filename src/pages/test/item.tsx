@@ -9,7 +9,6 @@ export default class Item extends Component {
   }
 
   _selectHandle (item) {
-    console.log('itemsss', item)
     this.setState({
       selectFlag: item
     })
@@ -18,7 +17,6 @@ export default class Item extends Component {
       answer: item,
       index: this.props.index
     }
-    console.log('selectHandle', this.props)
     this.props.onChange(params)
   }
 
@@ -32,8 +30,8 @@ export default class Item extends Component {
       itemData.option.map((item, index) => {
         return (
           <View className='item' onClick={this._selectHandle.bind(this, item.value)} key={index}>
-            <View className='title'><Text>{item.key.split('：')[0]}：</Text></View>
-            <View className='content'><Text>{item.key.split('：')[1]}</Text></View>
+            <View className='title'><Text>{item.key.split('ï¼š')[0]}ï¼š</Text></View>
+            <View className='content'><Text>{item.key.split('ï¼š')[1]}</Text></View>
             {
               this.state.selectFlag == item.value?
               <Image className='img' src={require('../../assets/images/select2.png')}/>
