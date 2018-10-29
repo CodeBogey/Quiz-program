@@ -12,8 +12,8 @@ Promise.prototype.finally = function (callback) {
   )
 }
 
-// const baseUrl = 'https://www.luonet.com'
-const baseUrl = 'http://192.168.0.14:8099'
+// const baseUrl = 'https://www.guangeryi.com'
+const baseUrl = 'http://192.168.0.244:8081'
 
 const request = function (obj = {}) {
   const defaultConfig = {

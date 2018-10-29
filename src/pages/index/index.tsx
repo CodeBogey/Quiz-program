@@ -123,10 +123,26 @@ export default class Index extends Component {
         <Swiper className='sbox'
           current={0}
           autoplay={false}
+          skip-hidden-item-layout={true}
         >
           <SwiperItem>
-            <View className='ibox'>
-              <Image src={require('../../assets/images/bg1.jpg')} className='img1'/>
+            <View className='ibox ibox1'>
+              <View className='hd'>
+                <View className='t'>
+                  <Image src={require('../../assets/images/bghead.png')} className='headimg'/>
+                  <View className='text1'>
+                    <Text>嘿，伙伴！</Text>
+                    <Text>欢迎来到广而易，这里我们需要您进行一次入职考试</Text>
+                  </View>
+                  <View className='text2'>
+                    <Text>请清楚一点： 这次考试将用于让我们进一步彼此了解，提供更好的空间让您尽情发挥</Text>
+                  </View>
+                  <View className='next'>
+                    <Image className='next-img' src={require('../../assets/images/next.png')} />
+                  </View>
+                </View>
+              </View>
+              <View className='bd'></View>
             </View>
           </SwiperItem>
           <SwiperItem>
@@ -134,10 +150,6 @@ export default class Index extends Component {
               <View className='hd'>
                 <View className='t'>
                   <Text>考前准备...</Text>
-                </View>
-                <View>
-                  <Text>id:</Text>
-                  <Text>{this.state.fdResourceId}</Text>
                 </View>
                 <View className='inputs'>
                   <Input placeholder='请输入您的姓名'  value={this.state.name} onInput={this._inputChange}/>

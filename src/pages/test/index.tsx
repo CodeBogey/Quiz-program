@@ -65,7 +65,6 @@ export default class Test extends Component {
 
   componentDidMount () {
     // console.log('TestData', TestData)
-    console.log(this.$router.params)
     if (this.$router.params && this.$router.params.id) {
       let id = this.$router.params.id
       this.setState({
@@ -90,7 +89,6 @@ export default class Test extends Component {
       method: 'GET',
       url: '/admin2/question/characterList',
     }).then(resp => {
-      console.log('resp', resp.data)
       let data = resp.data
       this.setState({
         testData: data
@@ -116,7 +114,6 @@ export default class Test extends Component {
         ringMove(start, end);
         step++;
         if ( n-num < 0) {
-          console.log('end',  n-num)
           _this._nextTest(_this.state.pageIndex, true)
         }
       } else {
@@ -156,17 +153,14 @@ export default class Test extends Component {
   }
 
   shandle (item) {
-    console.log('item', item)
     let params = {
       id: item.id,
       answer: item.answer
     }
     this.answerArr[item.index] = params
-    console.log('answer', this.answerArr)
   }
 
   _submit () {
-    console.log('id', this.state.id)
     if (!this.answerArr[39]) {
       Taro.showToast({
         title: '请先答完当前题目',
@@ -174,7 +168,6 @@ export default class Test extends Component {
         duration: 2000
       })
     }
-    console.log('this.answer', this.answerArr)
     let params ={
       id: this.state.id,
       fdAnswer: JSON.stringify(this.answerArr)
@@ -189,7 +182,6 @@ export default class Test extends Component {
       url: '/admin2/questionAccount/saveResult',
       data: params
     }).then(resp => {
-      console.log('answerArr', resp.data)
       const data = resp.data
       if (data.code == 1) {
         Taro.reLaunch({

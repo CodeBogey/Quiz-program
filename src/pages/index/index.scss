@@ -16,7 +16,7 @@
       height: 100%;
     }
   }
-  .ibox2 {
+  .ibox {
     .hd {
       flex: 1;
       background: #ffe300;
@@ -66,6 +66,43 @@
       height: 114px;
       .testBtn {
         
+      }
+    }
+  }
+  .ibox1 {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    .t {
+      width: 100%;
+    }
+    .headimg {
+      width: 614px;
+      height: 396px;
+    }
+    .text1 {
+      font-size: 48px;
+      color: #232323;
+      margin-top: 90px;
+      text {
+        display: block;
+      }
+    }
+    .text2 {
+      margin-top: 70px;
+      font-size: 24px;
+      color: #232323;
+    }
+    .next {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      width: 232px;
+      height: 86px;
+      margin-left: -116px;
+      .next-img {
+        width: 232px;
+        height: 86px;
       }
     }
   }
