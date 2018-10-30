@@ -22,7 +22,8 @@ export default class Test extends Component {
       duration: 300,
       timingFunction: 'ease',
     })
-    this.answerArr = new Array(40)
+    // this.answerArr = new Array(40)
+    this.answerArr = []
   }
   
   _nextTest (i, flag=false) {
@@ -90,6 +91,7 @@ export default class Test extends Component {
       url: '/admin2/question/characterList',
     }).then(resp => {
       let data = resp.data
+      console.log('data', data)
       this.setState({
         testData: data
       })
@@ -161,7 +163,7 @@ export default class Test extends Component {
   }
 
   _submit () {
-    if (!this.answerArr[39]) {
+    if (!this.answerArr[this.answerArr.length - 1]) {
       Taro.showToast({
         title: '请先答完当前题目',
         icon: 'none',
@@ -203,7 +205,7 @@ export default class Test extends Component {
     return (
       <View className='testBox'>
         <View className='hd'>
-          <Text>DISC快速智能测试</Text>
+          <Text>DISC性格测试</Text>
         </View>
         <View className='bd' >
           <View className='bd-wrap' animation={this.state.animationData}>

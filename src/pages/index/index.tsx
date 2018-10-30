@@ -39,7 +39,8 @@ export default class Index extends Component {
       return
     }
     // 手机号校验
-    let phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/
+    let phoneReg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$/
+    
     if (!phoneReg.test(this.state.phone)) {
       Taro.showToast({
         icon: 'none',
@@ -50,7 +51,7 @@ export default class Index extends Component {
     let params ={
       fdName: this.state.name,
       fdMobile: this.state.phone,
-      fdResourceId: '1669edf745c99d2fc4ea25d4a448be75'
+      fdResourceId: this.state.fdResourceId
     }
     Taro.showLoading({
       title: '加载中',
@@ -60,10 +61,18 @@ export default class Index extends Component {
       url: '/admin2/questionAccount',
       data: params
     }).then(resp => {
-      let id = resp.data.id
-      Taro.reLaunch({
-        url: `/pages/test/index?id=${id}`
-      })
+      let data = resp.data
+      if (data.id) {
+        let id = resp.data.id
+        Taro.reLaunch({
+          url: `/pages/test/index?id=${id}`
+        })
+      } else {
+        Taro.showToast({
+          icon: 'none',
+          title: data.content
+        })
+      }
     })
   }
   

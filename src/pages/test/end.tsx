@@ -3,6 +3,9 @@ import { View, Text, Image, Button } from '@tarojs/components'
 import './index.scss'
 
 export default class End extends Component {
+  config = {
+    navigationBarTitleText: '考试结束'
+  }
   render () {
     return (
       <View className='dialog'>
