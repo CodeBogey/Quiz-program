@@ -110,7 +110,7 @@ export default class Index extends Component {
     })
   }
   _activeHanle () {
-    let phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/
+    let phoneReg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$/
     if (this.state.name.trim() && phoneReg.test(this.state.phone)) {
       this.setState({
         activeFlag: true

@@ -41,7 +41,7 @@ export default class Test extends Component {
     }
     if (flag && !this.answerArr[i-1]) {
       this.answerArr[i-1] = {
-        id: this.state.testData[i].id,
+        id: this.state.testData[i-1].id,
         answer: ''
       }
     }
@@ -163,12 +163,14 @@ export default class Test extends Component {
   }
 
   _submit () {
-    if (!this.answerArr[this.answerArr.length - 1]) {
+    let answerFlag = this.answerArr[this.state.testData.length - 1]
+    if (!answerFlag) {
       Taro.showToast({
         title: '请先答完当前题目',
         icon: 'none',
         duration: 2000
       })
+      return
     }
     let params ={
       id: this.state.id,
@@ -228,7 +230,7 @@ export default class Test extends Component {
                     <View className='btns'>
                     {
                       index+1 == TestData.length?
-                      <Button  className='btn' onClick={this._submit.bind(this,)}>提交</Button>
+                      <Button  className='btn' onClick={this._submit.bind(this)}>提交</Button>
                       :<Button  className='btn' onClick={this._nextTest.bind(this, index+1, false)}>下一题</Button>
                     }
                       {/* <Button  className='btn' onClick={this._submit.bind(this, index+1)}>提交</Button> */}
