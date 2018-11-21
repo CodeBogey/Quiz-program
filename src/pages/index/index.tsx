@@ -62,17 +62,40 @@ export default class Index extends Component {
       data: params
     }).then(resp => {
       let data = resp.data
+      Taro.hideLoading()
       if (data.id) {
         let id = resp.data.id
         Taro.reLaunch({
           url: `/pages/test/index?id=${id}`
         })
       } else {
+        if (data.content) {
+          Taro.showToast({
+            icon: 'none',
+            title: data.content
+          })
+        } else {
+          Taro.showToast({
+            icon: 'none',
+            title: '数据异常，请联系管理员'
+          })
+        }
+      }
+      
+    }).catch((err) => {
+      Taro.hideLoading()
+      if (err.response.data && err.response.data.content) {
         Taro.showToast({
           icon: 'none',
-          title: data.content
+          title: err.response.data.content
+        })
+      } else {
+        Taro.showToast({
+          icon: 'none',
+          title: '操作异常，请联系管理员ss'
         })
       }
+      
     })
   }
   

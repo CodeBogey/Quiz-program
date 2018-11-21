@@ -4,13 +4,14 @@
 	"description": "",
 	"appid": "wx6b5798538bed4ca0",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
 	"condition": {
 		"search": {
 			"current": -1,
