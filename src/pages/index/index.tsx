@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Swiper, SwiperItem, Image, Input, Button } from '@tarojs/components'
-// import request from '../../request'
 
 
 import './index.scss'
@@ -92,10 +91,9 @@ export default class Index extends Component {
       } else {
         Taro.showToast({
           icon: 'none',
-          title: '操作异常，请联系管理员ss'
+          title: '操作异常，请联系管理员'
         })
       }
-      
     })
   }
   
