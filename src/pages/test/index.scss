@@ -138,3 +138,52 @@
     }
   }
 }
+.cover {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  .box {
+    background: #fff;
+    width: 660px;
+    height: 540px;
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    margin-left: -330px;
+    padding: 30px 56px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 24px;
+    line-height: 40px;
+    color: #131313;
+    .img {
+      width: 210px;
+      height: 210px;
+    }
+    .txts {
+      white-space: nowrap;
+      .strong {
+        font-size: 48px;
+        color: #8130ff;
+      }
+    }
+    .txt {
+      display: block;
+      margin-top: 8px;
+    }
+    .btn {
+      margin-top: 30px;
+      border: 1px solid #eee;
+      height: 78px;
+      line-height: 70px;
+      font-size: 30px;
+      border: solid 4px rgba(35, 35, 35, 0.4);
+      border-radius: 38px;
+      background: #fff;
+    }
+  }
+}

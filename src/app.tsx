@@ -16,6 +16,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/test/index',
+      'pages/test/unAnswer',
       'pages/test/end',
     ],
     window: {

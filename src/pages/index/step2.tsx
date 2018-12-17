@@ -16,24 +16,11 @@ export default class Index extends Component {
       phone: '',
       activeFlag: false,
       fdResourceId: '',
-      fdIsUsing: '',
-      animationData: {}
+      fdIsUsing: ''
     }
-    this.animation = Taro.createAnimation({
-      duration: 300,
-      timingFunction: 'ease',
-    })
-    this.id = ''
-    let _this = this
-    Taro.getSystemInfo({
-      success: res => {
-        _this.screenWidth = res.screenWidth
-      }
-    })
   }
 
   _startTest () {
-
     if (!this.state.fdIsUsing && this.state.fdResourceId) {
       Taro.showToast({
         icon: 'none',
@@ -75,11 +62,10 @@ export default class Index extends Component {
       let data = resp.data
       Taro.hideLoading()
       if (data.id) {
-        this.id = resp.data.id
-        // Taro.reLaunch({
-        //   url: `/pages/test/index?id=${id}`
-        // })
-        this._nextStep(2)
+        let id = resp.data.id
+        Taro.reLaunch({
+          url: `/pages/test/index?id=${id}`
+        })
       } else {
         if (data.content) {
           Taro.showToast({
@@ -155,45 +141,10 @@ export default class Index extends Component {
       })
     }
   }
-  _nextStep (i) {
-    let w = this.screenWidth
-
-    this.animation.translateX(-(w * i )).step()
-    this.setState({
-      animationData: this.animation.export(),
-    })
-  }
-  _startHandle () {
-    let id = this.id
-    Taro.reLaunch({
-      url: `/pages/test/index?id=${id}`
-    })
-  }
   render () {
     return (
       <View className='vbox'>
-        <View className='sbox'
-        animation={this.state.animationData}
-        >
-          <View className='swipe-box'>
-            <View className='ibox ibox1'>
-              <View className='hd'>
-                <View className='t'>
-                  <Image src={require('../../assets/images/bghead.png')} className='headimg'/>
-                  <View className='text1'>
-                    <Text>嘿，伙伴！</Text>
-                    <Text>欢迎来到广而易,</Text>
-                  </View>
-                  <View className='text2'>
-                    <Text>让我们来一场性格测试吧。</Text>
-                  </View>
-                  <View className='next'>
-                    <Button className='btn' onClick={this._nextStep.bind(this, 1)}>下一步</Button>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
+        <View className='sbox'>
           <View className='swipe-box'>
             <View className='ibox ibox2'>
               <View className='hd'>
@@ -208,26 +159,13 @@ export default class Index extends Component {
                   <Image src={require('../../assets/images/bg2.png')} />
                 </View>
                 <View className='startBox'>
-                  {/* <Button className={['btn', this.state.activeFlag?'active':'']} onClick={this._startTest.bind(this)}>开始考试</Button> */}
-                  <Button className={['btn', this.state.activeFlag?'active':'']} onClick={this._startTest.bind(this, 2)}>下一步</Button>
+                  <Button className={['btn', this.state.activeFlag?'active':'']} onClick={this._startTest.bind(this)}>开始考试</Button>
                 </View>
+              </View>
+              <View className='bd'>
               </View>
             </View>
           </View>
-          <View className='swipe-box '>
-            <View className='box3'>
-              <View className='hd'></View>
-              <View className='bd'>
-                <Text className='txt'>1 本测试为性格测试，结果没有优劣之分，请凭第一感觉，认真作答；</Text>
-                <Text className='txt'>2 总共40题，每题均有20秒的作答时间；</Text>
-                <Text className='txt'>3 若4个选项，都很符合，请选出最贴切的选项，若4个选项，都不符合，也选出比较贴切的选项；</Text>
-                <Text className='txt'>4 每题均为单选，且必选。</Text>
-              </View>
-              <View className='next'>
-                <Button className='btn' onClick={this._startHandle.bind(this, 1)}>开始测试</Button>
-              </View>
-            </View>
-          </View> 
         </View>
       </View>
     )

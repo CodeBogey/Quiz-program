@@ -3,7 +3,6 @@ import { View, Text, Button } from '@tarojs/components'
 import './index.scss'
 import Item from './item'
 import request from '../../request'
-import Tips from './tips'
 export default class Test extends Component {
   config = {
     navigationBarTitleText: '开始考试'
@@ -14,12 +13,8 @@ export default class Test extends Component {
       animationData: {},
       pageIndex: 1,
       testData: [],
-      id: '',
-      tipFlag: false,
-      unAnswerData: '',
-      unAnswerLength: ''
+      id: ''
     }
-    this.timer = '' // 计时器容器
     this.domWidth = 0
     this.animation = Taro.createAnimation({
       duration: 300,
@@ -27,6 +22,7 @@ export default class Test extends Component {
     })
     // this.answerArr = new Array(40)
     this.answerArr = []
+    this.indexArr = []
   }
   
   _nextTest (i, flag=false) {
@@ -52,11 +48,6 @@ export default class Test extends Component {
     this.setState({
       animationData: this.animation.export(),
       pageIndex: i + 1
-    }, ()=>{
-      if (this.timer) clearInterval(this.timer)
-      setTimeout(() => {
-        this._countDown()
-      }, 300)
     })
    
   }
@@ -68,13 +59,15 @@ export default class Test extends Component {
   }
 
   componentDidMount () {
-    if (this.$router.params && this.$router.params.id) {
-      let id = this.$router.params.id
+    if (this.$router.params && this.$router.params.data) {
+      let data = JSON.parse(this.$router.params.data)
+      let testData = data.dataArr.map(item => item.msg)
+      this.indexArr = data.dataArr.map(item => item.index)
       this.setState({
-        id
+        testData,
+        id: data.id
       })
     }
-    this._getListData()
   }
 
   _swiper () {
@@ -84,75 +77,6 @@ export default class Test extends Component {
        this.domWidth =  rect.width/1.05
        // console.log('rect.width', this.domWidth)
      }).exec()
-     this._countDown()
-  }
-  
-  _getListData () {
-    request({
-      method: 'GET',
-      url: '/admin2/question/characterList',
-    }).then(resp => {
-      let data = resp.data
-      this.setState({
-        testData: data
-      })
-    })
-  }
-
-  _countDown () {
-    if (this.timer) {
-      clearInterval(this.timer)
-    }
-    var step = 1,//计数动画次数
-    num = 0,//计数倒计时秒数（n - num）
-    start = 1.5 * Math.PI,// 开始的弧度
-    end = -0.5 * Math.PI // 结束的弧度
-
-    var animation_interval = 1000,// 每1秒运行一次计时器
-    n = 15; // 当前倒计时为10秒
-    const _this = this
-    function animation () {
-      if (step <= n) {
-        end = end + 2 * Math.PI / n;
-        ringMove(start, end);
-        step++;
-        if ( n-num < 0) {
-          _this._nextTest(_this.state.pageIndex, true)
-        }
-      } else {
-        clearInterval(this.timer);
-      }
-    }
-    function ringMove (s, e) {
-      var context = Taro.createCanvasContext('secondCanvas')
-
-      // 绘制圆环
-      context.setStrokeStyle('#ab75ff')
-      context.beginPath()
-      context.setLineWidth(3)
-      context.arc(20, 20, 16, s, e, true)
-      context.stroke()
-      context.closePath()
-      
-      // 绘制倒计时文本
-      context.beginPath()
-      context.setLineWidth(1)
-      context.setFontSize(12)
-      context.setFillStyle('#7319ff')
-      context.setTextAlign('center')
-      context.setTextBaseline('middle')
-      context.fillText(n - num + 's', 20, 20, 40)
-      context.fill()
-      context.closePath()
-
-      context.draw()
-
-      // 每完成一次全程绘制就+1
-      num++;
-    }
-    ringMove(start, end);
-    // 创建倒计时
-    this.timer = setInterval(animation, animation_interval)
   }
 
   shandle (item) {
@@ -173,32 +97,13 @@ export default class Test extends Component {
       })
       return
     }
-    let dataArr = []
-    this.answerArr.map((item, i) => {
-      if (item.answer == '') {
-        dataArr.push({
-          msg: this.state.TestData[i],
-          index: i
-        })
-      }
+    let oldData = JSON.parse(Taro.getStorageSync('testData'))
+    this.indexArr.map((item, i) => {
+        oldData[item] = this.answerArr[i]
     })
-    if (dataArr.length) {
-      let data = {
-        dataArr,
-        id: this.state.id
-      }
-      data = JSON.stringify(data)
-      this.setState({
-        unAnswerData: data,
-        tipFlag: true,
-        unAnswerLength: dataArr.length
-      })
-      Taro.setStorageSync('testData', JSON.stringify(this.answerArr))
-      return
-    }
     let params ={
       id: this.state.id,
-      fdAnswer: this.answerArr
+      fdAnswer: JSON.stringify(oldData)
     }
     Taro.showLoading({
       title: '加载中'
@@ -239,15 +144,7 @@ export default class Test extends Component {
               return (
                 <View className={['tbox', activeFlag ? 'active' : '']} key={index} >
                   <View className='tbox-wrap'>
-                    <View className='time'>
-                      {/* <Text>16s</Text> */}
-                      {
-                        activeFlag && 
-                        <View className='countDown'>
-                          <canvas style="width: 40px; height: 40px;transition: all 0.3s;" canvas-id={'secondCanvas'}></canvas>
-                        </View>
-                      }
-                    </View>
+                    
                     <Item onChange={this.shandle.bind(this)} itemData={item} index={index} onswiper={this._swiper.bind(this)}/>
                     <View className='btns'>
                     {
@@ -267,9 +164,6 @@ export default class Test extends Component {
         <View className='ft'>
           <Text>{this.state.pageIndex}/{this.state.testData.length}</Text>
         </View>
-        {
-          this.state.tipFlag && <Tips unAnswerData={this.state.unAnswerData} unAnswerLength={this.state.unAnswerLength}/>
-        }
       </View>
     )
   }

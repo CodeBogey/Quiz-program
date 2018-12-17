@@ -1,10 +1,16 @@
 .vbox {
   width: 100vw;
   height: 100vh;
+  background: #ffe300;
 }
 .sbox {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  .swipe-box {
+    position: relative;
+  }
   .ibox {
     width: 100%;
     height: 100%;
@@ -19,7 +25,7 @@
   .ibox {
     .hd {
       flex: 1;
-      background: #ffe300;
+      
       padding: 0 60px;
       position: relative;
       .t {
@@ -43,15 +49,15 @@
       }
       .startBox {
         position: absolute;
-        left: 60px;
-        right: 60px;
-        bottom: 45px;
+        left: 50px;
+        right: 50px;
+        bottom: 145px;
         .btn {
-          height: 68px;
-          border-radius: 34px;
+          height: 78px;
+          border-radius: 39px;
           border: 4px solid #a7960e;
           background: none;
-          line-height: 60px;
+          line-height: 70px;
           font-size: 30px;
           color: #bcbcbc;
           &.active {
@@ -83,27 +89,53 @@
     .text1 {
       font-size: 48px;
       color: #232323;
+      line-height: 72px;
       margin-top: 90px;
       text {
         display: block;
       }
     }
     .text2 {
-      margin-top: 70px;
-      font-size: 24px;
+      font-size: 48px;
+      line-height: 72px;
       color: #232323;
     }
-    .next {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      width: 232px;
-      height: 86px;
-      margin-left: -116px;
-      .next-img {
-        width: 232px;
-        height: 86px;
+    
+  }
+  .box3 {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 50px;
+    box-sizing: border-box;
+    .hd {
+      height: 500px;
+      margin-bottom: 70px;
+    }
+    .bd {
+      width: 100%;
+      .txt {
+        display: block;
+        font-size: 30px;
+        color: #232323;
+        line-height: 48px;
+        margin-bottom: 8px;
       }
+    }
+  }
+  .next {
+    position: absolute;
+    bottom: 140px;
+    left: 0;
+    right: 0;
+    height: 78px;
+    padding: 0 50px;
+    .btn {
+      border: 1px solid #eee;
+      height: 78px;
+      line-height: 70px;
+      font-size: 30px;
+      border: solid 4px #232323;
+      border-radius: 38px;
     }
   }
 }

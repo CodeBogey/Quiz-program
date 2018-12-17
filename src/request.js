@@ -13,7 +13,7 @@ Promise.prototype.finally = function (callback) {
 }
 
 const baseUrl = 'https://www.guangeryi.com'
-// const baseUrl = 'http://192.168.0.244:8081'
+// const baseUrl = 'http://192.168.0.20:8080'
 
 const request = function (obj = {}) {
   const defaultConfig = {
