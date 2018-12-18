@@ -5,7 +5,7 @@ import Item from './item'
 import request from '../../request'
 export default class Test extends Component {
   config = {
-    navigationBarTitleText: '开始考试'
+    navigationBarTitleText: '开始测试'
   }
   constructor (props) {
     super(props)

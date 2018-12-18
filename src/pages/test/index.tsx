@@ -6,7 +6,7 @@ import request from '../../request'
 import Tips from './tips'
 export default class Test extends Component {
   config = {
-    navigationBarTitleText: '开始考试'
+    navigationBarTitleText: '开始测试'
   }
   constructor (props) {
     super(props)
@@ -17,7 +17,8 @@ export default class Test extends Component {
       id: '',
       tipFlag: false,
       unAnswerData: '',
-      unAnswerLength: ''
+      unAnswerLength: '',
+      canvasFlag: true
     }
     this.timer = '' // 计时器容器
     this.domWidth = 0
@@ -92,7 +93,7 @@ export default class Test extends Component {
       method: 'GET',
       url: '/admin2/question/characterList',
     }).then(resp => {
-      let data = resp.data
+      let data = resp.data.slice(1,6)
       this.setState({
         testData: data
       })
@@ -109,7 +110,7 @@ export default class Test extends Component {
     end = -0.5 * Math.PI // 结束的弧度
 
     var animation_interval = 1000,// 每1秒运行一次计时器
-    n = 15; // 当前倒计时为10秒
+    n = 2; // 当前倒计时为10秒
     const _this = this
     function animation () {
       if (step <= n) {
@@ -173,6 +174,9 @@ export default class Test extends Component {
       })
       return
     }
+    this.setState({
+      canvasFlag: false
+    })
     let dataArr = []
     this.answerArr.map((item, i) => {
       if (item.answer == '') {
@@ -240,9 +244,8 @@ export default class Test extends Component {
                 <View className={['tbox', activeFlag ? 'active' : '']} key={index} >
                   <View className='tbox-wrap'>
                     <View className='time'>
-                      {/* <Text>16s</Text> */}
                       {
-                        activeFlag && 
+                        this.state.canvasFlag && activeFlag && 
                         <View className='countDown'>
                           <canvas style="width: 40px; height: 40px;transition: all 0.3s;" canvas-id={'secondCanvas'}></canvas>
                         </View>

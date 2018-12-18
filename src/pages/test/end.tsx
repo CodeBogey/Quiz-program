@@ -4,7 +4,10 @@ import './index.scss'
 
 export default class End extends Component {
   config = {
-    navigationBarTitleText: '考试结束'
+    navigationBarTitleText: '测试结束'
+  }
+  componentDidMount () {
+    Taro.removeStorageSync('testData')
   }
   render () {
     return (

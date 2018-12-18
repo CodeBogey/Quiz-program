@@ -4,12 +4,15 @@
   background: #ffe300;
 }
 .sbox {
-  width: 100%;
+  width: 300%;
   height: 100%;
   display: flex;
   flex-direction: row;
   .swipe-box {
     position: relative;
+    width: 100vw;
+    height: 100vh;
+    flex: 1;
   }
   .ibox {
     width: 100%;
@@ -61,9 +64,14 @@
           font-size: 30px;
           color: #bcbcbc;
           &.active {
-            color: #fff;
-            background: #6400FE;
-            border-color: #6400FE;
+            border: 1px solid #eee;
+            height: 78px;
+            line-height: 70px;
+            font-size: 30px;
+            border: solid 4px #232323;
+            border-radius: 38px;
+            background: #fff;
+            color: #232323;
           }
         }
       }
@@ -100,9 +108,276 @@
       line-height: 72px;
       color: #232323;
     }
-    
+    .imgs-animate {
+      width: 100%;
+      position: relative;
+      height: 500px;
+      .wrap {
+        position: absolute;
+        width: 158px;
+        height: 212px;
+        left: 50%;
+        top: 50%;
+        margin-left: -79px;
+        margin-top: -106px;
+      }
+      .img {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        margin-top: 0;
+      }
+      @keyframes ibox1_img1move
+      {
+      from {transform:scale(0);}
+      to {transform:scale(1);}
+      }
+      .img1 {
+        width: 158px;
+        height: 212px;
+        transform:scale(0);
+        animation: ibox1_img1move 0.5s  ease-in forwards;
+        z-index: 9;
+      }
+      @keyframes ibox1_img2move
+      {
+      from {
+        transform:scale(0);
+        left: 0;
+        top: 0;
+        }
+      to {
+        transform:scale(1);
+        left: 180px;
+        top: -65px;
+        }
+      }
+      .img2 {
+        height: 74px;
+        width: 195px;
+        left: 180px;
+        top: -65px;
+        transform:scale(0);
+        animation: ibox1_img2move 0.2s 0.2s 1 ease-in forwards;
+      }
+      @keyframes ibox1_img3move
+      {
+      from {
+        transform:scale(0);
+        left: 50px;
+        top: 50px;
+        }
+      to {
+        transform:scale(1);
+        left: 180px;
+        top: 240px;
+        }
+      }
+      .img3 {
+        height: 73px;
+        width: 195px;
+        left: 180px;
+        top: 240px;
+        transform:scale(0);
+        animation: ibox1_img3move 0.2s 0.4s 1 ease-in forwards;
+      }
+      @keyframes ibox1_img4move
+      {
+      from {
+        transform:scale(0);
+        left: 50px;
+        top: 50px;
+        }
+      to {
+        transform:scale(1);
+        left: -200px;
+        top: 170px;
+        }
+      }
+      .img4 {
+        height: 150px;
+        width: 170px;
+        left: -200px;
+        top: 170px;
+        transform:scale(0);
+        animation: ibox1_img4move 0.2s 0.6s 1 ease-in forwards;
+      }
+      @keyframes ibox1_img5move
+      {
+      from {
+        transform:scale(0);
+        left: 50px;
+        top: 50px;
+        }
+      to {
+        transform:scale(1);
+        left: -200px;
+        top: -70px;
+        }
+      }
+      .img5 {
+        height: 156px;
+        width: 150px;
+        left: -200px;
+        top: -70px;
+        transform:scale(0);
+        animation: ibox1_img5move 0.2s 0.8s 1 ease-in forwards;
+      }
+    }
   }
-  .box3 {
+  .ibox2 {
+    .imgs-animate {
+      width: 100%;
+      height: 470px;
+      margin-top: 110px;
+      position: relative;
+      overflow: hidden;
+      .wrap {
+        width: 256px;
+        height: 288px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        margin-left: -128px;
+        .img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          margin-top: 0;
+        }
+        @keyframes ibox2_img1move
+        {
+        0% {
+          top: 300px;
+          }
+        50% {
+          top: -40px;
+          }
+        70% {
+          top: 40px;
+          }
+        86% {
+          top: -20px;
+          }
+        100% {
+          top: 0;
+          }
+        }
+        .img1 {
+          width: 256px;
+          height: 288px;
+          z-index: 9;
+          top: 300px;
+          animation: ibox2_img1move 0.6s 0.5s 1 ease-in forwards;
+        }
+        @keyframes ibox2_img2move
+        {
+          from {
+            top: 86px;
+            opacity: 0;
+          }
+          to {
+            top: 116px;
+            opacity: 1;
+          }
+        }
+        .img2 {
+          width: 190px;
+          height: 32px;
+          z-index: 10;
+          left: 32px;
+          top: 116px;
+          opacity: 0;
+          animation: ibox2_img2move 0.2s 0.8s 1 ease-in forwards;
+        }
+        @keyframes ibox2_img3move
+        {
+          from {
+            transform: scale(0);
+            left: 0;
+            top: 30px;
+          }
+          to {
+            transform: scale(1);
+            left: -180px;
+            top: -50px;
+          }
+        }
+        .img3 {
+          width: 140px;
+          height: 140px;
+          left: -180px;
+          top: -50px;
+          transform: scale(0);
+          animation: ibox2_img3move 0.2s 1s 1 ease-in forwards;
+        }
+        @keyframes ibox2_img4move
+        {
+          from {
+            transform: scale(0);
+            left: 0;
+            top: 30px;
+          }
+          to {
+            transform: scale(1);
+            left: -46px;
+            top: -172px;
+          }
+        }
+        .img4 {
+          width: 142px;
+          height: 167px;
+          left: -46px;
+          top: -172px;
+          transform: scale(0);
+          animation: ibox2_img4move 0.2s 1s 1 ease-in forwards;
+        }
+        @keyframes ibox2_img5move
+        {
+          from {
+            transform: scale(0);
+            left: 0;
+            top: 30px;
+          }
+          to {
+            transform: scale(1);
+            left: 144px;
+            top: -180px;
+          }
+        }
+        .img5 {
+          width: 142px;
+          height: 167px;
+          left: 144px;
+          top: -180px;
+          transform: scale(0);
+          animation: ibox2_img5move 0.2s 1s 1 ease-in forwards;
+        }
+        @keyframes ibox2_img6move
+        {
+          from {
+            transform: scale(0);
+            left: 0;
+            top: 30px;
+          }
+          to {
+            transform: scale(1);
+            left: 280px;
+            top: -60px;
+          }
+        }
+        .img6 {
+          width: 140px;
+          height: 140px;
+          left: 280px;
+          top: -60px;
+          transform: scale(0);
+          animation: ibox2_img6move 0.2s 1s 1 ease-in forwards;
+        }
+      }
+    }
+  }
+  .ibox3 {
     width: 100vw;
     height: 100vh;
     padding: 0 50px;
@@ -110,6 +385,166 @@
     .hd {
       height: 500px;
       margin-bottom: 70px;
+      position: relative;
+      padding-top: 10px;
+      .imgs-animate {
+        position: relative;
+        height: 500px;
+        width: 100%;
+        .wrap {
+          position: absolute;
+          width: 214px;
+          height: 270px;
+          left: 50%;
+          margin-left: -107px;
+          bottom: 194px;
+          .img {
+            position: absolute;
+            left: -6px;
+            top: 0;
+          }
+          @keyframes ibox3_img1move
+          {
+            from {
+              transform: scale(0);
+            }
+            to {
+              transform: scale(1);
+            }
+          }
+          .img1 {
+            width: 215px;
+            height: 270px;
+            transform: scale(0);
+            animation: ibox3_img1move 0.1s 0.4s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img2move
+          {
+            from {
+              width: 0;
+              left: 120px;
+            }
+            to {
+              width: 38px;
+              left: 82px;
+            }
+          }
+          .img2 {
+            width: 0;
+            height: 11px;
+            left: 82px;
+            top: 228px;
+            animation: ibox3_img2move 0.1s 0.6s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img3move
+          {
+            from {
+              width: 0;
+            }
+            to {
+              width: 68px;
+            }
+          }
+          .img3 {
+            width: 0;
+            height: 11px;
+            left: 66px;
+            top: 208px;
+            transform-origin: 50% 100%;
+            animation: ibox3_img3move 0.1s 0.7s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img4move
+          {
+            from {
+              width: 0;
+              left: 172px;
+            }
+            to {
+              width: 142px;
+              left: 30px;
+            }
+          }
+          .img4 {
+            width: 0;
+            height: 11px;
+            left: 30px;
+            top: 184px;
+            animation: ibox3_img4move 0.1s 0.8s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img5move
+          {
+            from {
+              height: 0;
+              top: 190px;
+            }
+            to {
+              height: 50px;
+              top: 140px;
+            }
+          }
+          .img5 {
+            width: 23px;
+            height: 0;
+            left: 92px;
+            top: 140px;
+            animation: ibox3_img5move 0.1s 0.9s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img6move
+          {
+            from {
+              transform: scale(0);
+              top: 140px;
+            }
+            to {
+              transform: scale(1);
+              top: 52px;
+            }
+          }
+          .img6 {
+            width: 111px;
+            height: 97px;
+            left: 48px;
+            top: 52px;
+            transform: scale(0);
+            animation: ibox3_img6move 0.1s 1s 1 ease-in forwards;
+          }
+          @keyframes ibox3_img7move
+          {
+            from {
+              transform: scale(0);
+            }
+            to {
+              transform: scale(1);
+            }
+          }
+          .img7 {
+            width: 317px;
+            height: 271px;
+            left: -56px;
+            top: -46px;
+            transform: scale(0);
+            animation: ibox3_img7move 0.1s 1.1s 1 ease-in forwards;
+          }
+        }
+      }
+      .tips {
+        width: 572px;
+        height: 194px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        margin-left: -286px;
+        line-height: 194px;
+        text-align: center;
+        font-size: 48px;
+        .img {
+          width: 572px;
+          height: 194px;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
     }
     .bd {
       width: 100%;

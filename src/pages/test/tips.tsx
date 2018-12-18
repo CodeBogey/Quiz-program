@@ -21,7 +21,7 @@ export default class Tips extends Component {
           <View  className='txts'><Text>刚刚有</Text><Text className='strong'>{this.props.unAnswerLength}</Text><Text>题因超时未作答</Text></View>
           <Text className='txt'>请点击下方按钮</Text>
           <Text className='txt'>继续完成测试</Text>
-          <Button className='btn' onClick={this._goOn.bind(this)}>继续考试</Button>
+          <Button className='btn' onClick={this._goOn.bind(this)}>继续测试</Button>
         </View>
       </View>
     )

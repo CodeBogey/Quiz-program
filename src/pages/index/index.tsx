@@ -7,17 +7,18 @@ import request from '../../request'
 
 export default class Index extends Component {
   config = {
-    navigationBarTitleText: '准备考试'
+    navigationBarTitleText: '准备测试'
   }
   constructor (props) {
     super(props)
     this.state = {
-      name: '',
-      phone: '',
+      name: '张三三',
+      phone: '13344444444',
       activeFlag: false,
       fdResourceId: '',
       fdIsUsing: '',
-      animationData: {}
+      animationData: {},
+      step: 0
     }
     this.animation = Taro.createAnimation({
       duration: 300,
@@ -161,6 +162,7 @@ export default class Index extends Component {
     this.animation.translateX(-(w * i )).step()
     this.setState({
       animationData: this.animation.export(),
+      step: i
     })
   }
   _startHandle () {
@@ -170,6 +172,8 @@ export default class Index extends Component {
     })
   }
   render () {
+    let step2Flag = this.state.step == 1
+    let step3Flag = this.state.step == 2
     return (
       <View className='vbox'>
         <View className='sbox'
@@ -179,7 +183,15 @@ export default class Index extends Component {
             <View className='ibox ibox1'>
               <View className='hd'>
                 <View className='t'>
-                  <Image src={require('../../assets/images/bghead.png')} className='headimg'/>
+                  <View className='imgs-animate'>
+                    <View className='wrap'>
+                      <Image src={require('../../assets/images/ibox1_iocn1.png')} className='img img1'/>
+                      <Image src={require('../../assets/images/ibox1_iocn2.png')} className='img img2'/>
+                      <Image src={require('../../assets/images/ibox1_iocn3.png')} className='img img3'/>
+                      <Image src={require('../../assets/images/ibox1_iocn4.png')} className='img img4'/>
+                      <Image src={require('../../assets/images/ibox1_iocn5.png')} className='img img5'/>
+                    </View>
+                  </View>
                   <View className='text1'>
                     <Text>嘿，伙伴！</Text>
                     <Text>欢迎来到广而易,</Text>
@@ -198,25 +210,53 @@ export default class Index extends Component {
             <View className='ibox ibox2'>
               <View className='hd'>
                 <View className='t'>
-                  <Text>考前准备...</Text>
+                  <Text>请填写一下信息</Text>
                 </View>
                 <View className='inputs'>
                   <Input placeholder='请输入您的姓名'  value={this.state.name} onInput={this._inputChange}/>
                   <Input placeholder='请输入您的手机号' value={this.state.phone}  onInput={this._inputChange2} />
                 </View>
-                <View className='img'>
-                  <Image src={require('../../assets/images/bg2.png')} />
-                </View>
+                 {
+                  step2Flag && 
+                  <View className='imgs-animate'>
+                    <View className='wrap'>
+                      <Image src={require('../../assets/images/ibox2_iocn1.png')} className='img img1'/>
+                      <Image src={require('../../assets/images/ibox2_iocn2.png')} className='img img2'/>
+                      <Image src={require('../../assets/images/ibox2_iocn3.png')} className='img img3'/>
+                      <Image src={require('../../assets/images/ibox2_iocn4.png')} className='img img4'/>
+                      <Image src={require('../../assets/images/ibox2_iocn5.png')} className='img img5'/>
+                      <Image src={require('../../assets/images/ibox2_iocn6.png')} className='img img6'/>
+                    </View>
+                  </View>
+                }
                 <View className='startBox'>
-                  {/* <Button className={['btn', this.state.activeFlag?'active':'']} onClick={this._startTest.bind(this)}>开始考试</Button> */}
                   <Button className={['btn', this.state.activeFlag?'active':'']} onClick={this._startTest.bind(this, 2)}>下一步</Button>
                 </View>
               </View>
             </View>
-          </View>
+          </View> 
           <View className='swipe-box '>
-            <View className='box3'>
-              <View className='hd'></View>
+            <View className='ibox3'>
+              <View className='hd'>
+                {
+                  step3Flag && 
+                  <View className='imgs-animate'>
+                    <View className='wrap'>
+                      <Image src={require('../../assets/images/ibox3_iocn1.png')} className='img img1'/>
+                      <Image src={require('../../assets/images/ibox3_iocn2.png')} className='img img2'/>
+                      <Image src={require('../../assets/images/ibox3_iocn3.png')} className='img img3'/>
+                      <Image src={require('../../assets/images/ibox3_iocn4.png')} className='img img4'/>
+                      <Image src={require('../../assets/images/ibox3_iocn5.png')} className='img img5'/>
+                      <Image src={require('../../assets/images/ibox3_iocn6.png')} className='img img6'/>
+                      <Image src={require('../../assets/images/ibox3_iocn7.png')} className='img img7'/>
+                    </View>
+                  </View>
+                }
+                <View className='tips'>
+                  <Image src={require('../../assets/images/ibox3_line.png')} className='img'/>
+                  <Text>测试须知</Text>
+                </View>
+              </View>
               <View className='bd'>
                 <Text className='txt'>1 本测试为性格测试，结果没有优劣之分，请凭第一感觉，认真作答；</Text>
                 <Text className='txt'>2 总共40题，每题均有20秒的作答时间；</Text>
