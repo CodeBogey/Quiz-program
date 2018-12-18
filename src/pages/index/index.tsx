@@ -12,8 +12,8 @@ export default class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: '张三三',
-      phone: '13344444444',
+      name: '',
+      phone: '',
       activeFlag: false,
       fdResourceId: '',
       fdIsUsing: '',
