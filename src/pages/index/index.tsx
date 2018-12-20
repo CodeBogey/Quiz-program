@@ -210,7 +210,7 @@ export default class Index extends Component {
             <View className='ibox ibox2'>
               <View className='hd'>
                 <View className='t'>
-                  <Text>请填写一下信息</Text>
+                  <Text>请填写以下信息</Text>
                 </View>
                 <View className='inputs'>
                   <Input placeholder='请输入您的姓名'  value={this.state.name} onInput={this._inputChange}/>
@@ -258,10 +258,32 @@ export default class Index extends Component {
                 </View>
               </View>
               <View className='bd'>
-                <Text className='txt'>1 本测试为性格测试，结果没有优劣之分，请凭第一感觉，认真作答；</Text>
-                <Text className='txt'>2 总共40题，每题均有20秒的作答时间；</Text>
-                <Text className='txt'>3 若4个选项，都很符合，请选出最贴切的选项，若4个选项，都不符合，也选出比较贴切的选项；</Text>
-                <Text className='txt'>4 每题均为单选，且必选。</Text>
+                <View className='txt-box'>
+                  <View>
+                    <Text>1</Text>
+                  </View>
+                  <View>
+                    <Text className='txt'>本测试为性格测试，结果没有优劣之分，</Text>
+                    <Text className='txt'>请凭第一感觉，认真作答；</Text>
+                  </View>
+                </View>
+                <View className='txt-box'>
+                  <Text>2</Text>
+                  <Text className='txt'>总共40题，每题均有20秒的作答时间；</Text>
+                </View>
+                <View className='txt-box'>
+                  <View>
+                    <Text>3</Text>
+                  </View>
+                  <View>
+                    <Text className='txt'>若4个选项都很符合，请选出最贴切的选项，</Text>
+                    <Text className='txt'>若4个选项都不符合，也选出比较贴切的选项；</Text>
+                  </View>
+                </View>
+                <View className='txt-box'>
+                  <Text>4</Text>
+                  <Text className='txt'>每题均为单选，且必选。</Text>
+                </View>
               </View>
               <View className='next'>
                 <Button className='btn' onClick={this._startHandle.bind(this, 1)}>开始测试</Button>

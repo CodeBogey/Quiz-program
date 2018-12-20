@@ -548,12 +548,19 @@
     }
     .bd {
       width: 100%;
+      .txt-box {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 8px;
+        font-size: 30px;
+        color: #232323;
+      }
       .txt {
         display: block;
         font-size: 30px;
         color: #232323;
         line-height: 48px;
-        margin-bottom: 8px;
+        margin-left: 10px;
       }
     }
   }

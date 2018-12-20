@@ -93,7 +93,7 @@ export default class Test extends Component {
       method: 'GET',
       url: '/admin2/question/characterList',
     }).then(resp => {
-      let data = resp.data.slice(1,6)
+      let data = resp.data
       this.setState({
         testData: data
       })
@@ -110,7 +110,7 @@ export default class Test extends Component {
     end = -0.5 * Math.PI // 结束的弧度
 
     var animation_interval = 1000,// 每1秒运行一次计时器
-    n = 2; // 当前倒计时为10秒
+    n = 20; // 当前倒计时为10秒
     const _this = this
     function animation () {
       if (step <= n) {
