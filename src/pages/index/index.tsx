@@ -284,6 +284,10 @@ export default class Index extends Component {
                   <Text>4</Text>
                   <Text className='txt'>每题均为单选，且必选。</Text>
                 </View>
+                <View className='txt-box'>
+                  <Text>5</Text>
+                  <Text className='txt'>大致需要12分钟，请勿中途退出答题页面。</Text>
+                </View>
               </View>
               <View className='next'>
                 <Button className='btn' onClick={this._startHandle.bind(this, 1)}>开始测试</Button>
