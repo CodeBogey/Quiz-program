@@ -202,7 +202,7 @@ export default class Test extends Component {
     }
     let params ={
       id: this.state.id,
-      fdAnswer: this.answerArr
+      fdAnswer: JSON.stringify(this.answerArr)
     }
     Taro.showLoading({
       title: '加载中'
