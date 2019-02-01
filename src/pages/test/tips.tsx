@@ -1,3 +1,6 @@
+/**
+ * 第二轮考试提示页面
+ */
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Button } from '@tarojs/components'
 import './index.scss'

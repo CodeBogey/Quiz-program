@@ -1,3 +1,6 @@
+/* 
+* 第二轮考试页面，题库来源与第一轮考试未答的题目，第二轮考试不计时
+*/
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button } from '@tarojs/components'
 import './index.scss'
@@ -24,7 +27,7 @@ export default class Test extends Component {
     this.answerArr = []
     this.indexArr = []
   }
-  
+  // 点击下一题按钮，事件处理
   _nextTest (i, flag=false) {
     let w = this.domWidth
     if(i >= this.state.testData.length) {
@@ -69,7 +72,7 @@ export default class Test extends Component {
       })
     }
   }
-
+  // 设置item的宽度
   _swiper () {
      // 获取dom节点的宽度
      var query = Taro.createSelectorQuery()
@@ -78,7 +81,7 @@ export default class Test extends Component {
        // console.log('rect.width', this.domWidth)
      }).exec()
   }
-
+  // 答题
   shandle (item) {
     let params = {
       id: item.id,
@@ -86,7 +89,7 @@ export default class Test extends Component {
     }
     this.answerArr[item.index] = params
   }
-
+  // 提交考试结果
   _submit () {
     let answerFlag = this.answerArr[this.state.testData.length - 1]
     if (!answerFlag) {

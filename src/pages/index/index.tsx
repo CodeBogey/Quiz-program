@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Swiper, SwiperItem, Image, Input, Button } from '@tarojs/components'
+import { View, Text, Image, Input, Button } from '@tarojs/components'
 
 
 import './index.scss'
@@ -32,9 +32,8 @@ export default class Index extends Component {
       }
     })
   }
-
+  // 开始考试
   _startTest () {
-
     if (!this.state.fdIsUsing && this.state.fdResourceId) {
       Taro.showToast({
         icon: 'none',
@@ -112,14 +111,16 @@ export default class Index extends Component {
   }
   
   componentDidMount () {
+    // 根据二维码的场景值判断是校招还是社招
     if (this.$router.params && this.$router.params.scene) {
-      let params = this.$router.params
+      let params = this.$router.params // 获取场景值
       this.setState ({
         fdResourceId: params.scene
       })
       this._judge(params.scene)
     }
   }
+  // 判断校招是否开始
   _judge (id) {
     request({
       method: 'POST',
@@ -144,6 +145,7 @@ export default class Index extends Component {
       this._activeHanle()
     })
   }
+  // 手机号检验正确，按钮高亮
   _activeHanle () {
     let phoneReg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$/
     if (this.state.name.trim() && phoneReg.test(this.state.phone)) {
@@ -156,6 +158,7 @@ export default class Index extends Component {
       })
     }
   }
+  // 控制下一步的动画效果
   _nextStep (i) {
     let w = this.screenWidth
 
@@ -165,6 +168,7 @@ export default class Index extends Component {
       step: i
     })
   }
+  // 跳转到答题页面
   _startHandle () {
     let id = this.id
     Taro.reLaunch({

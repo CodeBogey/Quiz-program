@@ -1,3 +1,7 @@
+/**
+ * 考试结束页面
+ */
+
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Button } from '@tarojs/components'
 import './index.scss'

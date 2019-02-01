@@ -29,7 +29,7 @@ export default class Test extends Component {
     // this.answerArr = new Array(40)
     this.answerArr = []
   }
-  
+  // 点击下一题按钮，事件处理
   _nextTest (i, flag=false) {
     let w = this.domWidth
     if(i >= this.state.testData.length) {
@@ -77,7 +77,7 @@ export default class Test extends Component {
     }
     this._getListData()
   }
-
+  // 设置item的宽度
   _swiper () {
      // 获取dom节点的宽度
      var query = Taro.createSelectorQuery()
@@ -87,7 +87,7 @@ export default class Test extends Component {
      }).exec()
      this._countDown()
   }
-  
+  // 获取题库
   _getListData () {
     request({
       method: 'GET',
@@ -99,7 +99,7 @@ export default class Test extends Component {
       })
     })
   }
-
+  // 倒计时动画
   _countDown () {
     if (this.timer) {
       clearInterval(this.timer)
@@ -156,6 +156,7 @@ export default class Test extends Component {
     this.timer = setInterval(animation, animation_interval)
   }
 
+  // 答题
   shandle (item) {
     let params = {
       id: item.id,
@@ -164,6 +165,7 @@ export default class Test extends Component {
     this.answerArr[item.index] = params
   }
 
+  // 提交答题结果
   _submit () {
     let answerFlag = this.answerArr[this.state.testData.length - 1]
     if (!answerFlag) {
@@ -178,7 +180,7 @@ export default class Test extends Component {
       canvasFlag: false
     })
     let dataArr = []
-    this.answerArr.map((item, i) => {
+    this.answerArr.map((item, i) => { // 过滤出未答题的题目
       if (item.answer == '') {
         dataArr.push({
           msg: this.state.TestData[i],
@@ -186,7 +188,7 @@ export default class Test extends Component {
         })
       }
     })
-    if (dataArr.length) {
+    if (dataArr.length) { // 换成未答题的题目，方面第二轮考试拿到题库
       let data = {
         dataArr,
         id: this.state.id
@@ -207,6 +209,7 @@ export default class Test extends Component {
     Taro.showLoading({
       title: '加载中'
     })
+    // 全部答完直接结束
     request({
       method: 'POST',
       url: '/admin2/questionAccount/saveResult',
